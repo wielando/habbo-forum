@@ -19,6 +19,7 @@ final class Config {
     # pathing
     const MAIN_PATH = 'D:\Projects\habbohotel';
     const APP_PATH = Config::MAIN_PATH . '\app';
+    const PAGE_PATH = Config::MAIN_PATH . '\web\pages';
 
 
 }
