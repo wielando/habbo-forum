@@ -9,7 +9,6 @@ spl_autoload_register(function ($class) {
 
 $route = new Route();
 
-// Adding a new standalone page
 $route->addRoute(['url' => '/', 'name' => 'home'], function() {
     (new TemplateHandler('home'))->renderTemplate();
 });
