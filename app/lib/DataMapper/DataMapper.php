@@ -1,8 +1,8 @@
 <?php
 
-namespace app\DataMapper;
+namespace app\lib\DataMapper;
 
-use app\Connection\Connection;
+use app\lib\Connection\Connection;
 use PDOStatement;
 
 class DataMapper implements DataMapperInterface

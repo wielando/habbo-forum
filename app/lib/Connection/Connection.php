@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Connection;
+namespace app\lib\Connection;
 
-use app\Config\Config;
+use app\lib\Config\Config;
 use PDO;
 
 class Connection

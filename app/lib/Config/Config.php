@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Config;
+namespace app\lib\Config;
 
 final class Config {
 
@@ -20,6 +20,7 @@ final class Config {
     const MAIN_PATH = 'D:\Projects\habbohotel';
     const APP_PATH = Config::MAIN_PATH . '\app';
     const PAGE_PATH = Config::MAIN_PATH . '\web\pages';
+    const LIB_PATH = Config::APP_PATH . '\lib';
 
 
 }
