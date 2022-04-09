@@ -1,5 +1,6 @@
 <?php
 
+use app\Controller\ForumController;
 use app\Controller\HomeController;
 use app\lib\Config\Config;
 use app\lib\Route\Route;
@@ -13,8 +14,12 @@ require_once Config::MAIN_PATH . '/vendor/autoload.php';
 
 $route = new Route();
 
-$route->addRoute(['url' => '/startseite'], function() {
+$route->addRoute(['url' => '/home'], function() {
     return new HomeController();
+});
+
+$route->addRoute(['url' => '/forum'], function() {
+    return new ForumController();
 });
 
 

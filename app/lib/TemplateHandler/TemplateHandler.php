@@ -60,13 +60,13 @@ class TemplateHandler
 
 
     /**
-     * @param $vars
+     * @param array $vars
      * @return string
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function renderTemplate($vars = []): string
+    public function renderTemplate(array $vars = []): string
     {
 
         $filesystemLoader = new FilesystemLoader($this->filePath);
