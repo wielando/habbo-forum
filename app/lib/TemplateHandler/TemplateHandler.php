@@ -3,6 +3,7 @@
 namespace app\lib\TemplateHandler;
 
 use app\lib\Config\Config;
+use app\lib\Route\Route;
 use Twig\Environment as Twig;
 use Twig\Loader\FilesystemLoader as FilesystemLoader;
 use Twig\Error\LoaderError;
@@ -11,17 +12,34 @@ use Twig\Error\SyntaxError;
 
 class TemplateHandler
 {
-    private string $site = '/';
+    private string $pageName = '/';
+    private string $filePath = '/';
+
     private array $vars = [];
 
     /**
-     * @param $site
+     * @param string $pageName
      */
-    public function __construct($site)
+    public function __construct(string $pageName)
     {
-        $this->site = $site;
+        $this->setPageName($pageName);
+        $this->setFilePath();
 
         return $this;
+    }
+
+    /**
+     * @param string $pageName
+     * @return void
+     */
+    private function setPageName(string $pageName): void
+    {
+        $this->pageName = $pageName;
+    }
+
+    private function setFilePath(): void
+    {
+        $this->filePath = Config::PAGE_PATH . Route::$path;
     }
 
     /**
@@ -31,13 +49,11 @@ class TemplateHandler
      */
     public function renderTemplate($vars = []): string
     {
-        $fullPath = Config::PAGE_PATH . '\\' . $this->site;
-        $file = $this->site . '.twig';
-
-        $filesystemLoader = new FilesystemLoader($fullPath);
+    echo $this->filePath;
+        $filesystemLoader = new FilesystemLoader($this->filePath);
         $template = new Twig($filesystemLoader);
 
-        return $template->render($file, $vars);
+        return $template->render($this->pageName . '.twig', $vars);
     }
 
 }

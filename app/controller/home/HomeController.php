@@ -16,9 +16,11 @@ class HomeController implements ControllerInterface
     }
 
     /**
-     * @throws SyntaxError
-     * @throws RuntimeError
      * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     *
+     * @return string
      */
     public function renderPage(): string
     {
