@@ -32,7 +32,6 @@ class Route
 
         $this->routes[] = [
             'url' => $route['url'],
-            'name' => $route['name'],
             'callback' => (isset($callback)) ? $callback : null
         ];
 
@@ -51,10 +50,6 @@ class Route
             return false;
         }
 
-        if (!array_key_exists('name', $route)) {
-            return false;
-        }
-
         return true;
     }
 
@@ -68,7 +63,6 @@ class Route
      */
     public function submitRoute()
     {
-
         foreach ($this->routes as $route) {
             if (Route::$path !== $route['url']) {
                 continue;
@@ -83,7 +77,7 @@ class Route
 
     private function fallbackRoute()
     {
-        echo (new TemplateHandler('404'))->renderTemplate();
+        //echo (new TemplateHandler('404'))->renderTemplate();
 
         exit;
     }

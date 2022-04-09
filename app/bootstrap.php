@@ -13,39 +13,16 @@ require_once Config::MAIN_PATH . '/vendor/autoload.php';
 
 $route = new Route();
 
-$route->addRoute(['url' => '/example', 'name' => 'example'], function() {
-    echo (new TemplateHandler('example'))->renderTemplate(['name' => 'Wieland']);
+$route->addRoute(['url' => '/registrieren'], function() {
+    echo (new TemplateHandler('register', '/example'))->renderTemplate(['name' => 'Wieland']);
 });
 
-/**
- * Aufruf Struktur sieht folgendermaßen aus:
- * Beispiel: /example/test
- * Beispiel aufgebröselt: /{folder}/{folder}/{site}
- *
- * Ordner Beispiel:
- *
- *  example >
- *      test >
- *          test.twig
- *          test2.twig
- *
- * Wenn URL /example/test angegeben wird, wird geprüft, ob im Ordner test eine Datei mit dem selben Ordnernamen
- * liegt. Ja = rufe auf. Nein = 404
- *
- * Ruft man /example/test/test2.twig auf
- * wird die letzte Angabe in der URL als File aufgelöst
- */
-
-$route->addRoute(['url' => '/example/test', 'name' => 'test'], function() {
-    echo (new TemplateHandler('test'))->renderTemplate(['name' => 'Wieland']);
+$route->addRoute(['url' => '/startseite'], function() {
+    echo (new TemplateHandler('home', '/example'))->renderTemplate(['name' => 'Wieland']);
 });
 
-$route->addRoute(['url' => '/example/test2', 'name' => 'test2'], function() {
-    echo (new TemplateHandler('test2'))->renderTemplate(['name' => 'Wieland']);
-});
-
-$route->addRoute(['url' => '/home', 'name' => 'home'], function() {
-    return new HomeController();
+$route->addRoute(['url' => '/startseite/info'], function() {
+    echo (new TemplateHandler('overview', '/example/info'))->renderTemplate(['name' => 'Wieland']);
 });
 
 // submit every route

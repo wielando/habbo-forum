@@ -12,48 +12,52 @@ use Twig\Error\SyntaxError;
 
 class TemplateHandler
 {
-    private string $pageName = '/';
+    private string $filename = '/';
     private string $filePath = '/';
+    private string $folderToCall = '/';
 
     private array $vars = [];
 
     /**
-     * @param string $pageName
+     * @param string $filename
+     * @param string $folderToCall
      */
-    public function __construct(string $pageName)
+    public function __construct(string $filename, string $folderToCall)
     {
-        $this->setPageName($pageName);
+        $this->setFilename($filename);
+        $this->setFolderToCall($folderToCall);
         $this->setFilePath();
 
         return $this;
     }
 
+    private function setFolderToCall(string $folderToCall)
+    {
+        $this->folderToCall = $folderToCall;
+    }
+
     /**
-     * @param string $pageName
+     * @param string $filename
      * @return void
      */
-    private function setPageName(string $pageName): void
+    private function setFilename(string $filename): void
     {
-        $this->pageName = $pageName;
+        $this->filename = $filename;
     }
 
     private function setFilePath(): void
     {
-        $this->filePath = Config::PAGE_PATH . Route::$path;
+        $this->filePath = Config::PAGE_PATH . $this->folderToCall;
     }
 
-    /**
-     * @throws RuntimeError
-     * @throws SyntaxError
-     * @throws LoaderError
-     */
+
     public function renderTemplate($vars = []): string
     {
-    echo $this->filePath;
+
         $filesystemLoader = new FilesystemLoader($this->filePath);
         $template = new Twig($filesystemLoader);
 
-        return $template->render($this->pageName . '.twig', $vars);
+        return $template->render($this->filename . '.twig', $vars);
     }
 
 }
