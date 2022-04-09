@@ -30,12 +30,10 @@ class Route
         if (!$this->validateRoute($route))
             return false;
 
-        $this->routes = [
-            [
-                'url' => $route['url'],
-                'name' => $route['name'],
-                'callback' => (isset($callback)) ? $callback : null
-            ]
+        $this->routes[] = [
+            'url' => $route['url'],
+            'name' => $route['name'],
+            'callback' => (isset($callback)) ? $callback : null
         ];
 
         return true;

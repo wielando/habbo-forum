@@ -1,5 +1,6 @@
 <?php
 
+use app\controller\home\HomeController;
 use app\lib\Config\Config;
 use app\lib\Route\Route;
 use app\lib\TemplateHandler\TemplateHandler;
@@ -12,8 +13,12 @@ require_once Config::MAIN_PATH . '/vendor/autoload.php';
 
 $route = new Route();
 
-$route->addRoute(['url' => '/', 'name' => 'home'], function() {
-    echo (new TemplateHandler('home'))->renderTemplate(['name' => 'Wieland', 'rank' => 1]);
+$route->addRoute(['url' => '/example', 'name' => 'example'], function() {
+    echo (new TemplateHandler('example'))->renderTemplate(['name' => 'Wieland']);
+});
+
+$route->addRoute(['url' => '/home', 'name' => 'home'], function() {
+    return new HomeController();
 });
 
 // submit every route
