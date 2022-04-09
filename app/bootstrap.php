@@ -13,17 +13,11 @@ require_once Config::MAIN_PATH . '/vendor/autoload.php';
 
 $route = new Route();
 
-$route->addRoute(['url' => '/registrieren'], function() {
-    echo (new TemplateHandler('register', '/example'))->renderTemplate(['name' => 'Wieland']);
-});
-
 $route->addRoute(['url' => '/startseite'], function() {
-    echo (new TemplateHandler('home', '/example'))->renderTemplate(['name' => 'Wieland']);
+    return new HomeController();
 });
 
-$route->addRoute(['url' => '/startseite/info'], function() {
-    echo (new TemplateHandler('overview', '/example/info'))->renderTemplate(['name' => 'Wieland']);
-});
+
 
 // submit every route
 $route->submitRoute();

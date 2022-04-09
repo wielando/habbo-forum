@@ -19,7 +19,9 @@ final class Config {
     # pathing
     const MAIN_PATH = 'D:\Projects\habbo-forum';
     const APP_PATH = Config::MAIN_PATH . '\app';
-    const PAGE_PATH = Config::MAIN_PATH . '\web\pages';
+    const WEB_PATH = Config::MAIN_PATH . '\web';
+    const PAGE_PATH = Config::WEB_PATH . '\pages';
+    const STYLESHEET_PATH = Config::WEB_PATH . '\styles';
     const LIB_PATH = Config::APP_PATH . '\lib';
 
 

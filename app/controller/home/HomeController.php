@@ -16,14 +16,11 @@ class HomeController implements ControllerInterface
     }
 
     /**
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
      *
      * @return string
      */
     public function renderPage(): string
     {
-        return (new TemplateHandler('home'))->renderTemplate();
+        return (new TemplateHandler('home', '/home'))->renderTemplate();
     }
 }

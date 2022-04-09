@@ -31,6 +31,10 @@ class TemplateHandler
         return $this;
     }
 
+    /**
+     * @param string $folderToCall
+     * @return void
+     */
     private function setFolderToCall(string $folderToCall)
     {
         $this->folderToCall = $folderToCall;
@@ -45,19 +49,29 @@ class TemplateHandler
         $this->filename = $filename;
     }
 
+    /**
+     * @return void
+     */
     private function setFilePath(): void
     {
         $this->filePath = Config::PAGE_PATH . $this->folderToCall;
     }
 
 
+    /**
+     * @param $vars
+     * @return string
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
     public function renderTemplate($vars = []): string
     {
 
         $filesystemLoader = new FilesystemLoader($this->filePath);
         $template = new Twig($filesystemLoader);
 
-        return $template->render($this->filename . '.twig', $vars);
+        return $template->render($this->filename . '.twig', ['stylesheetFolder' => Config::STYLESHEET_PATH]);
     }
 
 }

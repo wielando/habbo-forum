@@ -1,3 +1,14 @@
 body {
-    background: red;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    width: 100%;
+    background-image: url("../../assets/bg.png");
 }
+
+.container {
+    width:960px;
+    z-index:1000;
+    margin:0 auto;
+}
+

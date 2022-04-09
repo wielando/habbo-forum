@@ -1,0 +1,141 @@
+body{
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display:inline-block;
+    width:100%;
+}
+
+.main-container{
+    width: 755px;
+    height: 575px;
+    background: white;
+    border-radius: 2px;
+    margin:15% auto;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
+}
+
+.left-site{
+    width: 235px;
+    height: 100%;
+    background: #333645;
+    float: left;
+    border-radius: 2px 0px 0px 2px;
+}
+
+.right-site{
+    width: 520px;
+    height: 100%;
+    float: left;
+}
+
+.lts-con{
+    width: 150px;
+    margin: 20px auto;
+}
+
+.rts-con{
+    margin-left:40px;
+    margin-top:35px;
+}
+
+.update{
+    width: 100%;
+    height: 50px;
+    background: #202334;
+    float: left;
+    margin-top: 30px;
+    color: white;
+    line-height: 50px;
+    margin-bottom: 20px;
+}
+
+.clock {
+    color:#fff;
+    margin-left: 20px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.team{
+    width: 100%;
+    height: 70px;
+    float: left;
+    line-height: 70px;
+    margin-left: 0px;
+    transition: 0.5s all;
+}
+
+.team:hover{
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.team-avatar{
+    width: 48px;
+    height: 47px;
+    float: left;
+    border-radius: 45px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.team-name {
+    font-size:15px;
+    color:#9a9ba0;
+    margin-top:-14px;
+}
+
+.teamwork {
+    font-size:11px;
+    font-weight:bold;
+    color:#60626b;
+    margin-top:-53px;
+}
+
+.update-block {
+    font-size:9px;
+    color:#fff;
+    background-color:#fa6b6b;
+    width:75px;
+    border-radius:1px;
+    text-align:center;
+    padding:4px;
+}
+
+.update-by-user {
+    font-size:9px;
+    margin-top:5px;
+    color:#9a9ba0;
+}
+
+.update-line {
+    width:100px;
+    float:left;
+    margin-right:20px;;
+}
+
+.update-line-right {
+    float: left;
+    max-width: 250px;
+}
+
+.update-title {
+    font-size:14px;
+    color:#6e6f78;
+    margin-bottom:5px;
+}
+
+.update-content {
+    font-size:11px;
+    line-height:11px;
+    color:#84868c;
+}
+
+.custom-line {
+    float: left;
+    width: 90%;
+    background: #ebebeb;
+    height: 1px;
+    margin-top: 20px;
+    margin-bottom:25px;
+}
