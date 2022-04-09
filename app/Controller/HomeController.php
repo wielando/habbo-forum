@@ -16,8 +16,6 @@ class HomeController implements ControllerInterface
         $this->setHomeModel();
         $this->setupHomeData();
 
-        //echo '<pre>' . var_dump($this->vars) . '</pre>';
-
         echo $this->renderPage();
     }
 
@@ -34,11 +32,6 @@ class HomeController implements ControllerInterface
         $staffUpdates = $this->homeModel->getStaffUpdates();
 
         return $this->vars['staffUpdates'] = $staffUpdates;
-    }
-
-    private function getStaffUpdates()
-    {
-        return $this->getStaffUpdates();
     }
 
     public function renderPage(): string
