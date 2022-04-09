@@ -28,8 +28,8 @@ class DataMapper implements DataMapperInterface
         return $this->statement->execute();
     }
 
-    public function fetchResult()
+    public function fetchResult(): bool|array
     {
-        return $this->statement->fetch(PDO::FETCH_ASSOC);
+        return $this->statement->fetchAll();
     }
 }
