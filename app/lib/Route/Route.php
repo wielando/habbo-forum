@@ -2,6 +2,8 @@
 
 namespace app\lib\Route;
 
+use app\lib\TemplateHandler\TemplateHandler;
+
 class Route
 {
     private array $routes;
@@ -76,6 +78,14 @@ class Route
 
             return $route['callback']();
         }
+
+        $this->fallbackRoute();
+    }
+
+
+    private function fallbackRoute()
+    {
+        echo (new TemplateHandler('404'))->renderTemplate();
 
         exit;
     }

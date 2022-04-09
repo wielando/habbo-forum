@@ -11,8 +11,12 @@ use Twig\Error\SyntaxError;
 
 class TemplateHandler
 {
-    private string $site;
+    private string $site = '/';
+    private array $vars = [];
 
+    /**
+     * @param $site
+     */
     public function __construct($site)
     {
         $this->site = $site;
@@ -25,7 +29,7 @@ class TemplateHandler
      * @throws SyntaxError
      * @throws LoaderError
      */
-    public function renderTemplate()
+    public function renderTemplate($vars = []): string
     {
         $fullPath = Config::PAGE_PATH . '\\' . $this->site;
         $file = $this->site . '.twig';
@@ -33,7 +37,7 @@ class TemplateHandler
         $filesystemLoader = new FilesystemLoader($fullPath);
         $template = new Twig($filesystemLoader);
 
-        echo $template->render($file);
+        return $template->render($file, $vars);
     }
 
 }
