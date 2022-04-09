@@ -4,7 +4,8 @@ namespace app\lib\TemplateHandler;
 
 use app\lib\Config\Config;
 use app\lib\Route\Route;
-use Twig\Environment as Twig;
+use Twig\Environment as TwigEnv;
+use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader as FilesystemLoader;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -69,9 +70,13 @@ class TemplateHandler
     {
 
         $filesystemLoader = new FilesystemLoader($this->filePath);
-        $template = new Twig($filesystemLoader);
+        $template = new TwigEnv($filesystemLoader, [
+            'debug' => true
+        ]);
 
-        return $template->render($this->filename . '.twig', ['stylesheetFolder' => Config::STYLESHEET_PATH]);
+        $template->addExtension(new DebugExtension());
+
+        return $template->render($this->filename . '.twig', ['stylesheetFolder' => Config::STYLESHEET_PATH, ...$vars]);
     }
 
 }

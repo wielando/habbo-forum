@@ -23,11 +23,13 @@
 </head>
 
 <body style="background-color: rgb(52, 152, 219);">
+
 <div class="container animated fadeInDown">
     <div class="main-container">
         <div class="left-site">
             <img id="logo" src="./web/assets/logo.png" alt="Habbohotel.me: Kostenlose Taler und Rares!"
                  style="margin-top:-45px; margin-left:60px;">
+
             <div class="update">
                 <i class="fa fa-clock-o clock"></i>
                 Updates
@@ -42,20 +44,25 @@
         </div>
 
         <div class="right-site">
-            <div class="rts-con">
-                <div class="update-line">
-                    <div class="update-block">UPDATE</div>
-                    <div class="update-by-user">by Wieland</div>
-                </div>
 
-                <div class="update-line-right">
-                    <div class="update-title">Changelogs April 9th</div>
-                    <div class="update-content">Click to see the new changelogs</div>
+            {% for staffUpdate in staffUpdates %}
+
+                <div class="rts-con">
+                    <div class="update-line">
+                        <div class="update-block">UPDATE</div>
+                        <div class="update-by-user">by {{ staffUpdate.username }}</div>
+                    </div>
+
+                    <div class="update-line-right">
+                        <div class="update-title">{{ staffUpdate.title }}</div>
+                        <div class="update-content">Click to see the new changelogs</div>
+                    </div>
+                    <div class="team-avatar" style="background: url({{ staffUpdate.avatar }}) 50% 30%;"></div>
+                    <div class="custom-line"></div>
                 </div>
-                <div class="team-avatar" style="background: url(https://i.imgur.com/ARi0uBW.png) 50% 30%;"></div>
-                <div class="custom-line"></div>
-            </div>
+            {% endfor %}
         </div>
+
 
     </div>
 </div>

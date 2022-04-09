@@ -1,6 +1,6 @@
 <?php
 
-use app\controller\home\HomeController;
+use app\Controller\HomeController;
 use app\lib\Config\Config;
 use app\lib\Route\Route;
 use app\lib\TemplateHandler\TemplateHandler;

@@ -12,7 +12,7 @@ final class Config {
     const MYSQL_HOST = '127.0.0.1';
     const MYSQL_USER = 'root';
     const MYSQL_PASSWORD = '';
-    const MYSQL_DATABASE = 'habbohotel';
+    const MYSQL_DATABASE = 'habme';
     const MYSQL_PORT = 3306;
     const CHARSET = 'utf8mb4';
 

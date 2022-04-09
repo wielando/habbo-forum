@@ -4,12 +4,12 @@ namespace app\lib\DataMapper;
 
 use app\lib\Connection\Connection;
 use PDOStatement;
+use PDO;
 
 class DataMapper implements DataMapperInterface
 {
 
     private Connection $connection;
-
     private PDOStatement $statement;
 
     public function __construct(Connection $connection)
@@ -21,5 +21,15 @@ class DataMapper implements DataMapperInterface
     {
         $this->statement = $this->connection->open()->prepare($sqlQuery);
         return $this;
+    }
+
+    public function executeStmt(): bool
+    {
+        return $this->statement->execute();
+    }
+
+    public function fetchResult()
+    {
+        return $this->statement->fetch(PDO::FETCH_ASSOC);
     }
 }
