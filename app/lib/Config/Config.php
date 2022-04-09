@@ -17,7 +17,7 @@ final class Config {
     const CHARSET = 'utf8mb4';
 
     # pathing
-    const MAIN_PATH = 'D:\Projects\habbohotel';
+    const MAIN_PATH = 'D:\Projects\habbo-forum';
     const APP_PATH = Config::MAIN_PATH . '\app';
     const PAGE_PATH = Config::MAIN_PATH . '\web\pages';
     const LIB_PATH = Config::APP_PATH . '\lib';
