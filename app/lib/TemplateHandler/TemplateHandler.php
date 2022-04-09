@@ -13,9 +13,6 @@ class TemplateHandler
 {
     private string $site;
 
-    private Twig $template;
-    private FilesystemLoader $filesystemLoader;
-
     public function __construct($site)
     {
         $this->site = $site;
@@ -33,10 +30,10 @@ class TemplateHandler
         $fullPath = Config::PAGE_PATH . '\\' . $this->site;
         $file = $this->site . '.twig';
 
-        $this->filesystemLoader = new FilesystemLoader($fullPath);
-        $this->template = new Twig($this->filesystemLoader);
+        $filesystemLoader = new FilesystemLoader($fullPath);
+        $template = new Twig($filesystemLoader);
 
-        echo $this->template->render($file);
+        echo $template->render($file);
     }
 
 }
