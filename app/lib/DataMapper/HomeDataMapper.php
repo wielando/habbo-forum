@@ -16,18 +16,32 @@ class HomeDataMapper
         return $this;
     }
 
-    private function setDataMapper(): DataMapper
+    private function setDataMapper(): void
     {
-        return $this->dataMapper = new DataMapper(new Connection());
+        $this->dataMapper = new DataMapper(new Connection());
     }
 
-    public function getAllStaffUpdates()
+    public function collectAllStaffUpdates(): bool|array
     {
         $statement = 'SELECT th.title, u.username, u.avatar, p.content FROM threads as th
                       LEFT JOIN users as u ON th.creator_id = u.id
                       LEFT JOIN posts as p ON th.id = p.thread_id';
 
         $this->dataMapper->prepare($statement);
+        $this->dataMapper->executeStmt();
+
+        return $this->dataMapper->fetchResult();
+    }
+
+    public function collectStaffsByRank(int $rank): bool|array
+    {
+        $statement = 'SELECT u.username, u.avatar FROM users as u
+                      LEFT JOIN rank as r ON r.rank_id = u.rank
+                      WHERE u.rank = :rank';
+
+
+        $this->dataMapper->prepare($statement);
+        $this->dataMapper->bindValues(['rank' => $rank]);
         $this->dataMapper->executeStmt();
 
         return $this->dataMapper->fetchResult();

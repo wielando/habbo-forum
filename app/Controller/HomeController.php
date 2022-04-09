@@ -14,7 +14,8 @@ class HomeController implements ControllerInterface
     public function __construct()
     {
         $this->setHomeModel();
-        $this->setupHomeData();
+        $this->setupStaffUpdates();
+        $this->setupCurrentStaffsData();
 
         echo $this->renderPage();
     }
@@ -27,17 +28,25 @@ class HomeController implements ControllerInterface
         $this->homeModel = new HomeModel();
     }
 
-    private function setupHomeData(): array
+    private function setupStaffUpdates(): void
     {
-        $staffUpdates = $this->homeModel->getStaffUpdates();
+        $staffUpdates = $this->homeModel->getAllStaffUpdates();
 
-        return $this->vars['staffUpdates'] = $staffUpdates;
+        $this->vars['staffUpdates'] = $staffUpdates;
+    }
+
+    private function setupCurrentStaffsData(): void
+    {
+        $staffs = $this->homeModel->getStaffsByRank(3);
+
+        $this->vars['staffs'] = $staffs;
     }
 
     public function renderPage(): string
     {
         return (new TemplateHandler('home', '/home'))->renderTemplate([
             'staffUpdates' => $this->vars['staffUpdates'],
+            'staffs' => $this->vars['staffs']
         ]);
     }
 }

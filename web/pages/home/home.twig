@@ -32,15 +32,17 @@
 
             <div class="update">
                 <i class="fa fa-clock-o clock"></i>
-                Updates
+                Developer
             </div>
 
-            <div class="team">
-                <div class="team-avatar" style="background: url(https://i.imgur.com/ARi0uBW.png) 50% 30%;"></div>
-                <div class="team-name">Wieland</div>
+            {% for staff in staffs %}
+                <div class="team">
+                    <div class="team-avatar" style="background: url({{ staff.avatar }}) 50% 30%;"></div>
+                    <div class="team-name">{{ staff.username }}</div>
 
-                <div class="teamwork">Developer</div>
-            </div>
+                    <div class="teamwork">Developer</div>
+                </div>
+            {% endfor %}
         </div>
 
         <div class="right-site">
