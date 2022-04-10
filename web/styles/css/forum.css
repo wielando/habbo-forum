@@ -1,0 +1,121 @@
+
+.header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: #343746;
+    z-index: 0;
+}
+
+.headcon {
+    width: 900px;
+    margin: auto;
+    line-height: 300px;
+}
+
+.place {
+    width: 150px;
+    height: 38px;
+    float: left;
+    background: rgba(0, 0, 0, 0.6);
+    line-height: 40px;
+    font-family: Arial, serif;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 45px;
+    border-radius: 2px;
+    margin-left: 15px;
+}
+
+.nav {
+    width: 100%;
+    height: 55px;
+    float: left;
+    margin-top: 60px;
+}
+
+.nav > .user {
+    height: 53px;
+    width: 40px;
+    background: url('../../assets/body.png');
+    float: left;
+    margin-left: 30px;
+}
+
+.nav > .icon1{
+    height: 50px;
+    width: 50px;
+    background: url('../../assets/icon1.png');
+    float: left;
+    margin-left: 50px;
+    margin-top: 5px;
+}
+
+.nav > .icon2{
+    height: 50px;
+    width: 50px;
+    background: url('../../assets/icon2.gif');
+    float: left;
+    margin-left: 50px;
+    margin-top: 5px;
+}
+
+.dashboard {
+    width: 900px;
+    height: 1000px;
+    background: white;
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 10%);
+    margin: -70px auto auto;
+    z-index: 10;
+}
+
+.line {
+    width: 100%;
+    height: 69px;
+    font-family: Roboto, serif;
+    line-height: 69px;
+    float: left;
+    font-size: 24px;
+    color: rgba(0,0,0,0.5);
+    margin-left: 30px;
+}
+
+.line > h1 {
+    font-family: Roboto, serif;
+}
+
+.dash-line {
+    width: 100%;
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+    float: left;
+    margin-bottom: 20px;
+}
+
+.dashboard-entries {
+    width: 80%;
+    margin: auto;
+}
+
+.community-tab {
+    margin-top: 10px;
+    width: 330px;
+    height: 155px;
+    float: left;
+    background: url('../../assets/com.png');
+    transition: 0.5s all;
+}
+
+.announcement-tab {
+    margin-top: 10px;
+    width: 330px;
+    height: 155px;
+    float: left;
+    background: url('../../assets/anc.png');
+    transition: 0.5s all;
+    margin-left: 60px;
+}
