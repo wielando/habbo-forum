@@ -1,3 +1,11 @@
+body {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display:inline-block;
+    width:100%;
+    background: url(../web-gallery/bg.png)center, #3498db;
+}
+
 
 .header {
     top: 0;
@@ -129,7 +137,6 @@
 .bar-content > .bar {
     font-size:9px;
     color:#fff;
-    background-color:#fa6b6b;
     width:95px;
     border-radius:1px;
     text-align:center;
@@ -145,14 +152,16 @@
 .update-line-right {
     font-family: Roboto, serif; 
     width:550px;
+    float: left;
+    max-width: 250px;
 }
 
-.shorttitle {
+.short-title {
     font-size:17px;
     width:550px;
     color:rgba(0,0,0,0.6);
     margin-bottom:5px;
-    font-family: Roboto;
+    font-family: Roboto, serif;
 }
 
 .short-text {
@@ -170,10 +179,28 @@
 }
 
 .user-avatar{
-    width: 65px;
-    height: 65px;
+    width: 58px;
+    height: 63px;
     float: left;
     border-radius: 65px;
     margin-left: 0px;
     margin-right: 15px;
+}
+
+.short-dash {
+    width: 750px;
+    height: 1px;
+    margin-left: 70px;
+    background: rgba(0,0,0,0.1);
+    float: left;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+.bar-red {
+    background-color:#fa6b6b;
+}
+
+.bar-green {
+    background-color:#87d37c;
 }

@@ -61,17 +61,42 @@
     <div class="line" style="margin-top:-20px">
         <h1>Die aktuellsten Beiträge aus dem Community Forum</h1>
     </div>
-    <div class="dash-line" style=""></div>
+    <div class="dash-line" style="margin-bottom: 70px"></div>
 
-    <div id="announcementContent" style="display: block;">
-        <div class="dash-line">
+    <div id="communityContent" data-tab="communityEntries" style="display: none;">
+        {% for communityThread in communityThreads %}
+            <div class="dashboard-entries">
+                <div class="bar-content">
+                    <div class="bar bar-green">COMMUNITY</div>
+                    <div class="user-post">by {{ communityThread.username }}</div>
+                </div>
+
+                <div class="update-line-right">
+                    <div class="short-title">{{ communityThread.title }}</div>
+                    <div class="short-text">Für den 08.02.2016 finden Wartungsarbeiten statt die dazu führen werden, dass das
+                        Habbo Hotel für wenige Stunden nicht erreichbar ist. Das Hotel wird um 23:00 Uhr den 07.02.2016
+                        heruntergefahren und eröffnet wieder am 08.02.20...
+                    </div>
+                </div>
+                <div class="right-avatar-content">
+                    <div class="user-avatar"
+                         style="background: url({{ communityThread.avatar }})50% 30%;"></div>
+                </div>
+            </div>
+            <div class="short-dash" style="margin-bottom: 50px"></div>
+        {% endfor %}
+    </div>
+
+    <div id="announcementContent" data-tab="announcementEntries" style="display: none;">
+        {% for announcementThread in announcementThreads %}
+        <div class="dashboard-entries">
             <div class="bar-content">
-                <div class="bar">ANNOUNCEMENT</div>
-                <div class="user-post">by WIELAND</div>
+                <div class="bar bar-red">ANNOUNCEMENT</div>
+                <div class="user-post">by {{ announcementThread.username }}</div>
             </div>
 
             <div class="update-line-right">
-                <div class="short-title">Anstehende Wartungsarbeiten für den 08.02.2016</div>
+                <div class="short-title">{{ announcementThread.title }}</div>
                 <div class="short-text">Für den 08.02.2016 finden Wartungsarbeiten statt die dazu führen werden, dass das
                     Habbo Hotel für wenige Stunden nicht erreichbar ist. Das Hotel wird um 23:00 Uhr den 07.02.2016
                     heruntergefahren und eröffnet wieder am 08.02.20...
@@ -79,9 +104,11 @@
             </div>
             <div class="right-avatar-content">
                 <div class="user-avatar"
-                     style="background: url(https://www.habbo.de/habbo-imaging/avatarimage?user=Kawu&amp;direction=2&amp;head_direction=3&amp;gesture=srp&amp;action=wlk,drk=44&amp;size=m)50% 30%;"></div>
+                     style="background: url({{ announcementThread.avatar }})50% 30%;"></div>
             </div>
         </div>
+        <div class="short-dash" style="margin-bottom: 50px"></div>
+        {% endfor %}
     </div>
 </div>
 
