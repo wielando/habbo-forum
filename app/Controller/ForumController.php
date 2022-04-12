@@ -3,21 +3,70 @@
 namespace app\Controller;
 
 use app\lib\TemplateHandler\TemplateHandler;
+use app\Model\ForumModel;
 
 class ForumController implements ControllerInterface
 {
     private array $vars = [];
+    private ForumModel $forumModel;
+
+    private int $communityTabId = 1;
+    private int $announcementTabId = 2;
+    private int $updateTabId = 3;
 
     public function __construct()
     {
+        $this->setForumModel();
+        $this->setUpThreads();
+
         echo $this->renderPage();
+    }
+
+    private function setUpThreads()
+    {
+        $this->setUpAnnouncementThreads();
+        $this->setUpCommunityThreads();
+        $this->setUpUpdateThreads();
+    }
+
+    private function setForumModel(): void
+    {
+        $this->forumModel = new ForumModel();
+    }
+
+    /**
+     * @return void
+     */
+    private function setUpAnnouncementThreads(): void
+    {
+        $this->vars['announcementThreads'] = $this->forumModel->getAnnouncementThreads($this->announcementTabId);
+    }
+
+    /**
+     * @return void
+     */
+    private function setUpCommunityThreads(): void
+    {
+        $this->vars['communityThreads'] = $this->forumModel->getCommunityThreads($this->communityTabId);
+    }
+
+    /**
+     * @return void
+     */
+    private function setUpUpdateThreads(): void
+    {
+        $this->vars['updateThreads'] = $this->forumModel->getUpdateThreads($this->updateTabId);
     }
 
     /**
      * @return string
      */
-    public function renderPage()
+    public function renderPage(): string
     {
-        return (new TemplateHandler('forum', '/forum'))->renderTemplate();
+        return (new TemplateHandler('forum', '/forum'))->renderTemplate([
+            'announcementThreads' => $this->vars['announcementThreads'],
+            'communityThreads' => $this->vars['communityThreads'],
+            'updateThreads' => $this->vars['updateThreads']
+        ]);
     }
 }
