@@ -18,7 +18,6 @@ class ForumController implements ControllerInterface
     {
         $this->setForumModel();
         $this->setUpThreads();
-
         echo $this->renderPage();
     }
 

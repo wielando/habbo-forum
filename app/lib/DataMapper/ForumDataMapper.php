@@ -21,8 +21,9 @@ class ForumDataMapper
      */
     public function collectAnnouncementThreads(int $id): array
     {
-        $statement = 'SELECT th.title, th.thread_type, u.username, u.avatar FROM threads as th
+        $statement = 'SELECT th.title, th.thread_type, u.username, u.avatar, p.content FROM threads as th
                       LEFT JOIN users as u ON th.creator_id = u.id
+                      LEFT JOIN posts as p ON p.thread_id = th.id
                       WHERE th.thread_type = :threadType';
 
         $this->dataMapper->prepare($statement);
@@ -38,8 +39,9 @@ class ForumDataMapper
      */
     public function collectCommunityThreads(int $id): array
     {
-        $statement = 'SELECT th.title, th.thread_type, u.username, u.avatar FROM threads as th
+        $statement = 'SELECT th.title, th.thread_type, u.username, u.avatar ,p.content FROM threads as th
                       LEFT JOIN users as u ON th.creator_id = u.id
+                      LEFT JOIN posts as p ON p.thread_id = th.id
                       WHERE th.thread_type = :threadType';
 
         $this->dataMapper->prepare($statement);

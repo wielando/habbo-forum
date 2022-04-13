@@ -22,7 +22,13 @@ class ForumModel implements ModelInterface
      */
     public function getAnnouncementThreads(int $id): array
     {
-        return $this->forumDataMapper->collectAnnouncementThreads($id);
+        $threads = $this->forumDataMapper->collectAnnouncementThreads($id);
+
+        foreach ($threads as $key => $thread) {
+            $threads[$key]['content'] = substr($thread['content'], 0, 50);
+        }
+
+        return $threads;
     }
 
     /**
@@ -31,7 +37,13 @@ class ForumModel implements ModelInterface
      */
     public function getCommunityThreads(int $id): array
     {
-        return $this->forumDataMapper->collectCommunityThreads($id);
+        $threads = $this->forumDataMapper->collectCommunityThreads($id);
+
+        foreach ($threads as $key => $thread) {
+            $threads[$key]['content'] = substr($thread['content'], 0, 50);
+        }
+
+        return $threads;
     }
 
     /**
