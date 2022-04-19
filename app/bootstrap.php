@@ -14,11 +14,15 @@ require_once Config::MAIN_PATH . '/vendor/autoload.php';
 
 $route = new Route();
 
-$route->addRoute(['url' => '/home'], function() {
+$route->addRoute('GET', ['url' => '/home'], function() {
     return new HomeController();
 });
 
-$route->addRoute(['url' => '/forum'], function() {
+$route->addRoute('GET', ['url' => '/forum'], function() {
+    return new ForumController();
+});
+
+$route->addRoute('GET', ['url' => '/forum/thread/{threadId}/edit/{postId}'], function() {
     return new ForumController();
 });
 

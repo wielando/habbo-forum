@@ -65,7 +65,7 @@
 
     <div id="communityContent" data-tab="communityEntries" style="display: none;">
         {% for communityThread in communityThreads %}
-            <div class="dashboard-entries">
+            <div class="dashboard-entries" data-toggle="modal" data-threadId="{{ communityThread.id }}">
                 <div class="bar-content">
                     <div class="bar bar-green">COMMUNITY</div>
                     <div class="user-post">by {{ communityThread.username }}</div>
@@ -87,7 +87,7 @@
 
     <div id="announcementContent" data-tab="announcementEntries" style="display: none;">
         {% for announcementThread in announcementThreads %}
-        <div class="dashboard-entries">
+        <div class="dashboard-entries" data-toggle="modal" data-threadId="{{ announcementThread.id }}" data-modallink="">
             <div class="bar-content">
                 <div class="bar bar-red">ANNOUNCEMENT</div>
                 <div class="user-post">by {{ announcementThread.username }}</div>

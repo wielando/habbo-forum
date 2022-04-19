@@ -39,4 +39,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
         });
     }
 
+    const forumThreads = document.querySelectorAll('[data-toggle="modal"]');
+
+    // TODO: Create ajax request to controller
+    for (const [key, thread] of Object.entries(forumThreads)) {
+        thread.addEventListener('click', (element) => {
+
+        });
+    }
+
 });
