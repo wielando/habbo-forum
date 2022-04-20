@@ -22,11 +22,5 @@ $route->addRoute('GET', ['url' => '/forum'], function() {
     return new ForumController();
 });
 
-$route->addRoute('GET', ['url' => '/forum/thread/{threadId}/edit/{postId}'], function() {
-    return new ForumController();
-});
-
-
-
 // submit every route
 $route->submitRoute();

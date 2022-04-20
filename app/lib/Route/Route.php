@@ -8,7 +8,6 @@ class Route
 {
     private array $routes;
     public static string $currentPath = '/';
-    private array $params = [];
 
     public function __construct()
     {
@@ -35,12 +34,10 @@ class Route
      * @param $callback
      * @return bool
      */
-    public function addRoute($method, array $route, $callback): bool
+    public function addRoute($method, array $route, $callback = null): bool
     {
         if (!$this->validateRoute($route, $method))
             return false;
-
-        $this->setParams($route['url']);
 
         $this->routes[] = [
             'method' => $method,
@@ -51,16 +48,6 @@ class Route
         return true;
     }
 
-    private function setParams(string $url)
-    {
-        $r = explode('{', $url);
-        if (isset($r[1])) {
-            $r = explode('}', $r[1]);
-            return $r[0];
-        }
-
-        return '';
-    }
 
     /**
      * Make sure that the route array contains needed keys
@@ -91,16 +78,10 @@ class Route
     private function validateMethod(string $method): bool
     {
 
-        $methodType = '';
-
-        switch ($method) {
-            case 'GET':
-            case 'POST':
-                $methodType = $method;
-                break;
-            default:
-                $methodType = null;
-        }
+        $methodType = match ($method) {
+            'GET', 'POST' => $method,
+            default => null,
+        };
 
         if ($methodType === null)
             return false;
@@ -119,6 +100,7 @@ class Route
     public function submitRoute()
     {
         foreach ($this->routes as $route) {
+
             if (Route::$currentPath !== $route['url']) {
                 continue;
             }
@@ -126,5 +108,4 @@ class Route
             return $route['callback']();
         }
     }
-
 }
