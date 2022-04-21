@@ -84,10 +84,10 @@
             <div class="short-dash" style="margin-bottom: 50px"></div>
         {% endfor %}
     </div>
-
+    <a href="{{ currentPath }}">Test</a>
     <div id="announcementContent" data-tab="announcementEntries" style="display: none;">
         {% for announcementThread in announcementThreads %}
-        <div class="dashboard-entries" data-toggle="modal" data-threadId="{{ announcementThread.id }}" data-modallink="">
+        <div class="dashboard-entries" data-toggle="modal" data-threadId="{{ announcementThread.id }}" data-modallink="{{ currentPath }}">
             <div class="bar-content">
                 <div class="bar bar-red">ANNOUNCEMENT</div>
                 <div class="user-post">by {{ announcementThread.username }}</div>

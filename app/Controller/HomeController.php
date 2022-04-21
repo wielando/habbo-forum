@@ -11,14 +11,19 @@ class HomeController implements ControllerInterface
     private array $vars = [];
     private HomeModel $homeModel;
 
-    public function __construct()
+    public function renderHome()
     {
         $this->setHomeModel();
         $this->setupStaffUpdates();
         $this->setupCurrentStaffsData();
 
-        echo $this->renderPage();
+        echo (new TemplateHandler('home', '/home'))->renderTemplate([
+            'staffUpdates' => $this->vars['staffUpdates'],
+            'staffs' => $this->vars['staffs']
+        ]);
     }
+
+
 
     /**
      * @return void
@@ -40,13 +45,5 @@ class HomeController implements ControllerInterface
         $staffs = $this->homeModel->getStaffsByRank(3);
 
         $this->vars['staffs'] = $staffs;
-    }
-
-    public function renderPage(): string
-    {
-        return (new TemplateHandler('home', '/home'))->renderTemplate([
-            'staffUpdates' => $this->vars['staffUpdates'],
-            'staffs' => $this->vars['staffs']
-        ]);
     }
 }

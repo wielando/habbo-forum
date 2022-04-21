@@ -76,7 +76,7 @@ class TemplateHandler
 
         $template->addExtension(new DebugExtension());
 
-        return $template->render($this->filename . '.twig', ['stylesheetFolder' => Config::STYLESHEET_PATH, ...$vars]);
+        return $template->render($this->filename . '.twig', ['stylesheetFolder' => Config::STYLESHEET_PATH, 'currentPath' => Route::$currentPath, ...$vars]);
     }
 
 }

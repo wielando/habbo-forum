@@ -14,11 +14,17 @@ class ForumController implements ControllerInterface
     private int $announcementTabId = 2;
     private int $updateTabId = 3;
 
-    public function __construct()
+
+    public function displayForum()
     {
         $this->setForumModel();
         $this->setUpThreads();
-        echo $this->renderPage();
+
+        echo (new TemplateHandler('forum', '/forum'))->renderTemplate([
+            'announcementThreads' => $this->vars['announcementThreads'],
+            'communityThreads' => $this->vars['communityThreads'],
+            'updateThreads' => $this->vars['updateThreads']
+        ]);
     }
 
     private function setUpThreads()
@@ -55,17 +61,5 @@ class ForumController implements ControllerInterface
     private function setUpUpdateThreads(): void
     {
         $this->vars['updateThreads'] = $this->forumModel->getUpdateThreads($this->updateTabId);
-    }
-
-    /**
-     * @return string
-     */
-    public function renderPage(): string
-    {
-        return (new TemplateHandler('forum', '/forum'))->renderTemplate([
-            'announcementThreads' => $this->vars['announcementThreads'],
-            'communityThreads' => $this->vars['communityThreads'],
-            'updateThreads' => $this->vars['updateThreads']
-        ]);
     }
 }
