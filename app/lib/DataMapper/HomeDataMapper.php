@@ -30,7 +30,7 @@ class HomeDataMapper
         $this->dataMapper->prepare($statement);
         $this->dataMapper->executeStmt();
 
-        return $this->dataMapper->fetchResult();
+        return $this->dataMapper->fetchResults();
     }
 
     public function collectStaffsByRank(int $rank): bool|array
@@ -44,7 +44,7 @@ class HomeDataMapper
         $this->dataMapper->bindValues(['rank' => $rank]);
         $this->dataMapper->executeStmt();
 
-        return $this->dataMapper->fetchResult();
+        return $this->dataMapper->fetchResults();
     }
 
 }

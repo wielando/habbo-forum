@@ -39,9 +39,17 @@ class DataMapper implements DataMapperInterface
     /**
      * @return bool|array
      */
+    public function fetchResults(): bool|array
+    {
+        return $this->statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * @return bool|array
+     */
     public function fetchResult(): bool|array
     {
-        return $this->statement->fetchAll();
+        return $this->statement->fetch(PDO::FETCH_ASSOC);
     }
 
     public function bindValues(array $fields) : PDOStatement
