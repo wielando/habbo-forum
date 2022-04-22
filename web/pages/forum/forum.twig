@@ -2,6 +2,8 @@
 <head>
     <title>Habme - Wartungsmodus</title>
 
+    <link rel="shortcut icon" type="image/x-icon" href="./web/assets/favicon.ico">
+
     <link rel="stylesheet" href="./web/styles/css/animate.css"/>
     <link rel="stylesheet" href="./web/styles/css/main.css"/>
     <link rel="stylesheet" href="./web/styles/css/forum.css"/>
@@ -25,6 +27,11 @@
 </head>
 
 <body style="background-color: rgb(52, 152, 219);">
+
+{% if threadPosts != false %}
+    {% include 'thread.twig' %}
+{% endif %}
+
 <div class="header">
     <div class="headcon">
         <img id="logo" src="./web/assets/logo.png" style="margin-top:45px; float: left; ">
@@ -63,6 +70,7 @@
     </div>
     <div class="dash-line" style="margin-bottom: 70px"></div>
 
+    <div onclick="showTopic()">SAS</div>
     <div id="communityContent" data-tab="communityEntries" style="display: none;">
         {% for communityThread in communityThreads %}
             <div class="dashboard-entries" data-toggle="modal" data-threadId="{{ communityThread.id }}">
@@ -73,7 +81,7 @@
 
                 <div class="update-line-right">
                     <div class="short-title">{{ communityThread.title }}</div>
-                    <div class="short-text">{{ communityThread.content }}
+                    <div class="short-text">
                     </div>
                 </div>
                 <div class="right-avatar-content">
@@ -84,7 +92,7 @@
             <div class="short-dash" style="margin-bottom: 50px"></div>
         {% endfor %}
     </div>
-    <a href="{{ currentPath }}">Test</a>
+
     <div id="announcementContent" data-tab="announcementEntries" style="display: none;">
         {% for announcementThread in announcementThreads %}
         <div class="dashboard-entries" data-toggle="modal" data-threadId="{{ announcementThread.id }}" data-modallink="{{ currentPath }}">
@@ -95,7 +103,7 @@
 
             <div class="update-line-right">
                 <div class="short-title">{{ announcementThread.title }}</div>
-                <div class="short-text">{{ announcementThread.content }}</div>
+                <div class="short-text"></div>
             </div>
             <div class="right-avatar-content">
                 <div class="user-avatar"
