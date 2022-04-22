@@ -2,6 +2,7 @@
 
 namespace app\Controller;
 
+use app\lib\DataMapper\UserDataMapper;
 use app\lib\TemplateHandler\TemplateHandler;
 use app\Model\ForumModel;
 
@@ -20,18 +21,54 @@ class ForumController implements ControllerInterface
         $this->setForumModel();
         $this->setUpThreads();
 
+        $this->vars['threadPosts'] = false;
+
+        if (isset($_GET['thread']) && is_numeric($_GET['thread'])) {
+            $this->setUpThreadPosts();
+        }
+
         echo (new TemplateHandler('forum', '/forum'))->renderTemplate([
             'announcementThreads' => $this->vars['announcementThreads'],
             'communityThreads' => $this->vars['communityThreads'],
-            'updateThreads' => $this->vars['updateThreads']
+            'threadPosts' => $this->vars['threadPosts']
         ]);
+    }
+
+    private function setUpThreadPosts()
+    {
+        $userDataMapper = new UserDataMapper();
+
+        $currentThreadId = $_GET['thread'];
+        $userPosts = $this->forumModel->getThreadPosts($currentThreadId);
+
+        //TODO: Fallback
+        if (!$userPosts)
+            return;
+
+        foreach ($userPosts as $key => $userPost) {
+            $userPosts[$key]['ranks'] = $userDataMapper->getRankFromUserById($userPost['user_id']);
+
+            if ($this->isUserThreadCreator($userPost['thread_id'], $userPost['user_id']))
+                $userPost[$key]['isOp'] = true;
+        }
+
+        $this->vars['threadPosts'] = $userPosts;
+    }
+
+    private function isUserThreadCreator(int $threadId, int $userId): bool
+    {
+        $creatorId = $this->forumModel->getThreadCreatorUserId($threadId)['id'];
+
+        if ($userId !== $creatorId)
+            return false;
+
+        return true;
     }
 
     private function setUpThreads()
     {
         $this->setUpAnnouncementThreads();
         $this->setUpCommunityThreads();
-        $this->setUpUpdateThreads();
     }
 
     private function setForumModel(): void
@@ -55,11 +92,4 @@ class ForumController implements ControllerInterface
         $this->vars['communityThreads'] = $this->forumModel->getCommunityThreads($this->communityTabId);
     }
 
-    /**
-     * @return void
-     */
-    private function setUpUpdateThreads(): void
-    {
-        $this->vars['updateThreads'] = $this->forumModel->getUpdateThreads($this->updateTabId);
-    }
 }

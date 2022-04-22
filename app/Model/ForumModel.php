@@ -20,44 +20,55 @@ class ForumModel implements ModelInterface
      * @param int $id
      * @return array
      */
-    public function getAnnouncementThreads(int $id): array
+    public function getAnnouncementThreads(int $threadTypeId): array
     {
-        $threads = $this->forumDataMapper->collectAnnouncementThreads($id);
+        $threads = $this->forumDataMapper->collectAnnouncementThreads($threadTypeId);
 
-        foreach ($threads as $key => $thread) {
+        /*foreach ($threads as $key => $thread) {
             $threads[$key]['content'] = substr($thread['content'], 0, 50);
-        }
+        }*/
 
         return $threads;
     }
 
     /**
-     * @param int $id
+     * @param int $threadTypeId
      * @return array
      */
-    public function getCommunityThreads(int $id): array
+    public function getCommunityThreads(int $threadTypeId): array
     {
-        $threads = $this->forumDataMapper->collectCommunityThreads($id);
+        $threads = $this->forumDataMapper->collectCommunityThreads($threadTypeId);
 
-        foreach ($threads as $key => $thread) {
+        /*foreach ($threads as $key => $thread) {
             $threads[$key]['content'] = substr($thread['content'], 0, 50);
-        }
+        }*/
+
 
         return $threads;
     }
 
     /**
-     * @param int $id
-     * @return array
+     * @param int $threadId
+     * @return array|bool
      */
-    public function getUpdateThreads(int $id): array
+    public function getThreadPosts(int $threadId): array|bool
     {
-        return $this->forumDataMapper->collectUpdateThreads($id);
+        $posts = $this->forumDataMapper->collectThreadPosts($threadId);
+
+        if (empty($posts)) {
+            return false;
+        }
+
+        return $posts;
+    }
+
+    public function getThreadCreatorUserId(int $threadId)
+    {
+        return $this->forumDataMapper->collectThreadCreatorUserId($threadId);
     }
 
     public function setDataMapper(): ForumDataMapper
     {
         return $this->forumDataMapper = new ForumDataMapper();
     }
-
 }

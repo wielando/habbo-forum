@@ -21,34 +21,32 @@ class ForumDataMapper
      */
     public function collectAnnouncementThreads(int $id): array
     {
-        $statement = 'SELECT th.title, th.thread_type, u.username, u.avatar, p.content, th.id FROM threads as th
+        $statement = 'SELECT th.title, th.thread_type, u.username, u.avatar, th.id FROM threads as th
                       LEFT JOIN users as u ON th.creator_id = u.id
-                      LEFT JOIN posts as p ON p.thread_id = th.id
                       WHERE th.thread_type = :threadType';
 
         $this->dataMapper->prepare($statement);
         $this->dataMapper->bindValues(['threadType' => $id]);
         $this->dataMapper->executeStmt();
 
-        return $this->dataMapper->fetchResult();
+        return $this->dataMapper->fetchResults();
     }
 
     /**
      * @param int $id
      * @return array
      */
-    public function collectCommunityThreads(int $id): array
+    public function collectCommunityThreads(int $id): array|bool
     {
-        $statement = 'SELECT th.title, th.thread_type, u.username, u.avatar ,p.content, th.id FROM threads as th
+        $statement = 'SELECT th.title, th.thread_type, u.username, u.avatar, th.id FROM threads as th
                       LEFT JOIN users as u ON th.creator_id = u.id
-                      LEFT JOIN posts as p ON p.thread_id = th.id
                       WHERE th.thread_type = :threadType';
 
         $this->dataMapper->prepare($statement);
         $this->dataMapper->bindValues(['threadType' => $id]);
         $this->dataMapper->executeStmt();
 
-        return $this->dataMapper->fetchResult();
+        return $this->dataMapper->fetchResults();
     }
 
     /**
@@ -65,6 +63,33 @@ class ForumDataMapper
         $this->dataMapper->bindValues(['threadType' => $id]);
         $this->dataMapper->executeStmt();
 
+        return $this->dataMapper->fetchResults();
+    }
+
+    public function collectThreadPosts(int $threadId): array
+    {
+        $statement = 'SELECT u.username, u.avatar, u.id as user_id, p.content, th.id as thread_id FROM posts as p 
+                      LEFT JOIN users as u ON p.user_id = u.id
+                      LEFT JOIN threads as th ON p.thread_id = th.id
+                      WHERE th.id = :threadId';
+
+        $this->dataMapper->prepare($statement);
+        $this->dataMapper->bindValues(['threadId' => $threadId]);
+        $this->dataMapper->executeStmt();
+
+        return $this->dataMapper->fetchResults();
+    }
+
+    public function collectThreadCreatorUserId(int $threadId): array
+    {
+        $statement = 'SELECT u.id FROM users as u
+                      LEFT JOIN threads as th ON th.creator_id = u.id
+                      WHERE th.id = :threadId';
+
+        $this->dataMapper->prepare($statement);
+        $this->dataMapper->bindValues(['threadId' => $threadId]);
+        $this->dataMapper->executeStmt();
+
         return $this->dataMapper->fetchResult();
     }
 
@@ -75,4 +100,6 @@ class ForumDataMapper
     {
         $this->dataMapper = new DataMapper(new Connection());
     }
+
+
 }
