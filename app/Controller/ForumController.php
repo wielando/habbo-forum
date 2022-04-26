@@ -27,9 +27,21 @@ class ForumController implements ControllerInterface
             $this->setUpThreadData();
         }
 
+        if (isset($_GET['thread']) && is_numeric($_GET['thread'])) {
+            echo "HI";
+            $this->displayPost();
+        }
+
         echo (new TemplateHandler('forum', '/forum'))->renderTemplate([
             'announcementThreads' => $this->vars['announcementThreads'],
             'communityThreads' => $this->vars['communityThreads'],
+            'threadPosts' => $this->vars['threadPosts']
+        ]);
+    }
+
+    public function displayPost(): void
+    {
+        echo (new TemplateHandler('thread', '/forum'))->displayTemplate([
             'threadPosts' => $this->vars['threadPosts']
         ]);
     }

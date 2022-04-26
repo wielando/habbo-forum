@@ -79,4 +79,15 @@ class TemplateHandler
         return $template->render($this->filename . '.twig', ['stylesheetFolder' => Config::STYLESHEET_PATH, 'currentPath' => Route::$currentPath, ...$vars]);
     }
 
+    public function displayTemplate(array $vars = [])
+    {
+        $filesystemLoader = new FilesystemLoader($this->filePath);
+        $template = new TwigEnv($filesystemLoader, [
+            'debug' => true
+        ]);
+
+        $temp = $template->load($this->filename . '.twig');
+        return $template->display($this->filename . '.twig', [...$vars]);
+    }
+
 }

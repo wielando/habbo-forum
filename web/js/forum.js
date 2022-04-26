@@ -50,6 +50,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
     this.showTopic = function() {
-        location.href = "?thread=32";
+        location.href = "?thread=1";
     }
 });
