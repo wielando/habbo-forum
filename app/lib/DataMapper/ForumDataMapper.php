@@ -93,6 +93,17 @@ class ForumDataMapper
         return $this->dataMapper->fetchResult();
     }
 
+    public function collectThreadTitleById(int $threadId): array
+    {
+        $statement = 'SELECT title FROM threads WHERE id = :threadId';
+
+        $this->dataMapper->prepare($statement);
+        $this->dataMapper->bindValues(['threadId' => $threadId]);
+        $this->dataMapper->executeStmt();
+
+        return $this->dataMapper->fetchResult();
+    }
+
     /**
      * @return void
      */

@@ -29,7 +29,7 @@
 <body style="background-color: rgb(52, 152, 219);">
 
 {% if threadPosts != false %}
-    {% include 'thread.twig' %}
+    {% include 'thread.twig' with {'threadPosts': threadPosts} %}
 {% endif %}
 
 <div class="header">

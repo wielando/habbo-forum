@@ -62,6 +62,11 @@ class ForumModel implements ModelInterface
         return $posts;
     }
 
+    public function getThreadTitleById(int $threadId): array|bool
+    {
+        return $this->forumDataMapper->collectThreadTitleById($threadId);
+    }
+
     public function getThreadCreatorUserId(int $threadId)
     {
         return $this->forumDataMapper->collectThreadCreatorUserId($threadId);

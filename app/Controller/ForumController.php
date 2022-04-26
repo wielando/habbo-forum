@@ -24,7 +24,7 @@ class ForumController implements ControllerInterface
         $this->vars['threadPosts'] = false;
 
         if (isset($_GET['thread']) && is_numeric($_GET['thread'])) {
-            $this->setUpThreadPosts();
+            $this->setUpThreadData();
         }
 
         echo (new TemplateHandler('forum', '/forum'))->renderTemplate([
@@ -32,6 +32,17 @@ class ForumController implements ControllerInterface
             'communityThreads' => $this->vars['communityThreads'],
             'threadPosts' => $this->vars['threadPosts']
         ]);
+    }
+
+    /**
+     * Collects Thread Meta Information and post data
+     *
+     * @return void
+     */
+    private function setUpThreadData()
+    {
+        $this->setUpThreadPosts();
+        $this->vars['threadPosts']['thread_title'] = $this->forumModel->getThreadTitleById($_GET['thread'])['title'];
     }
 
     private function setUpThreadPosts()
@@ -49,7 +60,7 @@ class ForumController implements ControllerInterface
             $userPosts[$key]['ranks'] = $userDataMapper->getRankFromUserById($userPost['user_id']);
 
             if ($this->isUserThreadCreator($userPost['thread_id'], $userPost['user_id']))
-                $userPost[$key]['isOp'] = true;
+                $userPosts[$key]['isOp'] = true;
         }
 
         $this->vars['threadPosts'] = $userPosts;

@@ -1,2 +1,46 @@
 <div id="overlay"></div>
-<div id="threadPopup" class="animated fadeInDown"></div>
+<div id="threadPopup" class="animated fadeInDown">
+    <div class="line" style="margin-top: -10px;">
+        <img src="./web/assets/threadpin.png" style="margin-top: 17px; margin-right: 20px;float: left;">
+        {{ threadPosts.thread_title }}
+    </div>
+
+    <div class="dash-line" style="margin-bottom:10px;"></div>
+    <div class="thread-content">
+        <div class="topic-post">
+
+            {% for threadPost in threadPosts %}
+
+            2
+
+            {% endfor %}
+
+            <!--<div class="comment-area">
+                <div class="left-com">
+                    <br><br>
+                    <div class="post-username-title">Wieland</div>
+                    <div class="post-user-image"
+                         style="background: url(https://www.habbo.de/habbo-imaging/avatarimage?user=Kawu&amp;direction=2&amp;head_direction=3&amp;gesture=srp&amp;action=wlk,drk=44&amp;size=m)30% 40%;"></div>
+
+                    <div class="post-rank" style="background: url(./web/assets/userbar.png)rgba(217, 30, 24, 0.8);;">
+                        <span style="background: url(./web/assets/userbg.gif)center">Hotelteam</span></div>
+                    <div class="post-rank" style="background: url(./web/assets/userbar.png),#F7CA18;">Thread-Ersteller
+                    </div>
+                </div>
+
+                <div class="right-com">
+                    <div class="post-date"><span
+                                style="font-weight: bold;">Anstehende Wartungsarbeiten für den 08.02.2016</span>
+                        <div style="float: right;"><img src="./web/assets/owner_icon.gif" title="Verfasser des Themas"
+                                                        style="margin-top: -6px;"></div>
+                        <div style="float:right"></div>
+                    </div>
+                    <div class="user-comment">Für den 08.02.2016 finden Wartungsarbeiten statt die dazu führen werden,
+                        dass das Habbo Hotel für wenige Stunden nicht erreichbar ist. Das Hotel wird um 23:00 Uhr den
+                        07.02.2016 heruntergefahren und eröffnet wieder am 08.02.2016 um 10:00 Uhr
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>
