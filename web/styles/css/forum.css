@@ -324,3 +324,35 @@ body {
 .rank-op {
     background-color: #F7CA18;
 }
+
+.rank-member {
+    background-color: #4183D7;
+}
+
+.rank-premium {
+    background-color: #e67e22;
+}
+
+.comment-box {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 100px;
+    min-height: 100px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 13px;
+    font-family: Arial, serif;
+    margin-bottom: 10px;
+}
+
+.comment-submit {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 2px;
+    background-color: #3498db;
+    box-shadow: inset 0px 1px 1px #ccc;
+    color: #fff;
+    font-weight: bold;
+}

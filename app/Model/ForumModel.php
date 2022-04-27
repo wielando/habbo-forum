@@ -47,6 +47,11 @@ class ForumModel implements ModelInterface
         return $threads;
     }
 
+    public function createThreadPost(int $threadId, int $userId, string $content): bool
+    {
+        return $this->forumDataMapper->insertThreadPost($threadId, $userId, $content);
+    }
+
     /**
      * @param int $threadId
      * @return array|bool

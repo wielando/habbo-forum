@@ -68,7 +68,7 @@ class ForumDataMapper
 
     public function collectThreadPosts(int $threadId): array
     {
-        $statement = 'SELECT u.username, u.avatar, u.id as user_id, p.content, th.id as thread_id FROM posts as p 
+        $statement = 'SELECT u.username, u.avatar, u.id as user_id, p.content, th.id as thread_id, p.date FROM posts as p 
                       LEFT JOIN users as u ON p.user_id = u.id
                       LEFT JOIN threads as th ON p.thread_id = th.id
                       WHERE th.id = :threadId';
@@ -112,5 +112,12 @@ class ForumDataMapper
         $this->dataMapper = new DataMapper(new Connection());
     }
 
+    public function insertThreadPost(int $threadId, int $userId, string $content): bool
+    {
+        $statement = 'INSERT INTO posts (user_id, thread_id, content, date) VALUES (:userId, :threadId, :content, :date)';
 
+        $this->dataMapper->prepare($statement);
+        $this->dataMapper->bindValues(['userId' => $userId, 'threadId' => $threadId, 'content' => $content, 'date' => time()]);
+        return $this->dataMapper->executeStmt();
+    }
 }
