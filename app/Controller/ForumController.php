@@ -25,10 +25,6 @@ class ForumController implements ControllerInterface
 
         if (isset($_GET['thread']) && is_numeric($_GET['thread'])) {
             $this->setUpThreadData();
-        }
-
-        if (isset($_GET['thread']) && is_numeric($_GET['thread'])) {
-            echo "HI";
             $this->displayPost();
         }
 
@@ -39,10 +35,14 @@ class ForumController implements ControllerInterface
         ]);
     }
 
+    /**
+     * @return void
+     */
     public function displayPost(): void
     {
-        echo (new TemplateHandler('thread', '/forum'))->displayTemplate([
-            'threadPosts' => $this->vars['threadPosts']
+        (new TemplateHandler('thread', '/forum'))->displayTemplate([
+            'threadPosts' => $this->vars['threadPosts'],
+            'threadTitle' => $this->forumModel->getThreadTitleById($_GET['thread'])['title']
         ]);
     }
 
@@ -54,7 +54,6 @@ class ForumController implements ControllerInterface
     private function setUpThreadData()
     {
         $this->setUpThreadPosts();
-        $this->vars['threadPosts']['thread_title'] = $this->forumModel->getThreadTitleById($_GET['thread'])['title'];
     }
 
     private function setUpThreadPosts()
@@ -76,6 +75,10 @@ class ForumController implements ControllerInterface
         }
 
         $this->vars['threadPosts'] = $userPosts;
+
+        echo '<pre>';
+        var_dump($userPosts);
+        echo '</pre>';
     }
 
     private function isUserThreadCreator(int $threadId, int $userId): bool

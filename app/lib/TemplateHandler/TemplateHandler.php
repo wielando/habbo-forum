@@ -86,7 +86,6 @@ class TemplateHandler
             'debug' => true
         ]);
 
-        $temp = $template->load($this->filename . '.twig');
         return $template->display($this->filename . '.twig', [...$vars]);
     }
 

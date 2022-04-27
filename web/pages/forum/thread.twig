@@ -2,7 +2,7 @@
 <div id="threadPopup" class="animated fadeInDown">
     <div class="line" style="margin-top: -10px;">
         <img src="./web/assets/threadpin.png" style="margin-top: 17px; margin-right: 20px;float: left;">
-        {{ threadPosts.thread_title }}
+        {{ threadTitle }}
     </div>
 
     <div class="dash-line" style="margin-bottom:10px;"></div>
@@ -11,7 +11,37 @@
 
             {% for threadPost in threadPosts %}
 
-            2
+                <div class="comment-area">
+                    <div class="left-com">
+                        <br><br>
+                        <div class="post-username-title">{{ threadPost.username }}</div>
+                        <div class="post-user-image"
+                             style="background: url({{ threadPost.avatar }})30% 40%;"></div>
+
+
+                        {% for rank in threadPost.ranks %}
+
+                            <div class="post-rank rank-{{ rank.rank_name|lower }}">
+                                <span style="background: url(./web/assets/userbg.gif)center">{{ rank.rank_name }}</span>
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="right-com">
+                        <div class="post-date"><span
+                                    style="font-weight: bold;">{{ threadTitle }}</span>
+                            <div style="float: right;"><img src="./web/assets/owner_icon.gif"
+                                                            title="Verfasser des Themas"
+                                                            style="margin-top: -6px;"></div>
+                            <div style="float:right"></div>
+                        </div>
+                        <div class="user-comment">
+                            {{ threadPost.content }}
+                        </div>
+                    </div>
+                </div>
 
             {% endfor %}
 

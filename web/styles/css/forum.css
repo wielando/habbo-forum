@@ -1,9 +1,9 @@
 body {
     background-repeat: no-repeat;
     background-size: 100%;
-    display:inline-block;
-    width:100%;
-    background: url(../web-gallery/bg.png)center, #3498db;
+    display: inline-block;
+    width: 100%;
+    background: url(../web-gallery/bg.png) center, #3498db;
 }
 
 
@@ -53,7 +53,7 @@ body {
     margin-left: 30px;
 }
 
-.nav > .icon1{
+.nav > .icon1 {
     height: 50px;
     width: 50px;
     background: url('../../assets/icon1.png');
@@ -62,7 +62,7 @@ body {
     margin-top: 5px;
 }
 
-.nav > .icon2{
+.nav > .icon2 {
     height: 50px;
     width: 50px;
     background: url('../../assets/icon2.gif');
@@ -88,7 +88,7 @@ body {
     line-height: 69px;
     float: left;
     font-size: 24px;
-    color: rgba(0,0,0,0.5);
+    color: rgba(0, 0, 0, 0.5);
     margin-left: 30px;
 }
 
@@ -99,7 +99,7 @@ body {
 .dash-line {
     width: 100%;
     height: 1px;
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
     float: left;
     margin-bottom: 20px;
 }
@@ -129,56 +129,56 @@ body {
 }
 
 .bar-content {
-    width:100px;
-    float:left;
-    margin-right:20px;
+    width: 100px;
+    float: left;
+    margin-right: 20px;
 }
 
 .bar-content > .bar {
-    font-size:9px;
-    color:#fff;
-    width:95px;
-    border-radius:1px;
-    text-align:center;
-    padding:4px;
+    font-size: 9px;
+    color: #fff;
+    width: 95px;
+    border-radius: 1px;
+    text-align: center;
+    padding: 4px;
 }
 
 .bar-content > .user-post {
-    font-size:9px;
-    margin-top:5px;
-    color:#9a9ba0;
+    font-size: 9px;
+    margin-top: 5px;
+    color: #9a9ba0;
 }
 
 .update-line-right {
-    font-family: Roboto, serif; 
-    width:550px;
+    font-family: Roboto, serif;
+    width: 550px;
     float: left;
     max-width: 250px;
 }
 
 .short-title {
-    font-size:17px;
-    width:550px;
-    color:rgba(0,0,0,0.6);
-    margin-bottom:5px;
+    font-size: 17px;
+    width: 550px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 5px;
     font-family: Roboto, serif;
 }
 
 .short-text {
-    font-size:13px;
-    line-height:15px;
-    color:rgba(0,0,0,0.4);
-    color:#84868c;
-    width:510px;
-    float:left;
+    font-size: 13px;
+    line-height: 15px;
+    color: rgba(0, 0, 0, 0.4);
+    color: #84868c;
+    width: 510px;
+    float: left;
 }
 
 .right-avatar-content {
-    float:right;
-    width:30px;
+    float: right;
+    width: 30px;
 }
 
-.user-avatar{
+.user-avatar {
     width: 58px;
     height: 63px;
     float: left;
@@ -191,25 +191,25 @@ body {
     width: 750px;
     height: 1px;
     margin-left: 70px;
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
     float: left;
     margin-bottom: 20px;
     margin-top: 50px;
 }
 
 .bar-red {
-    background-color:#fa6b6b;
+    background-color: #fa6b6b;
 }
 
 .bar-green {
-    background-color:#87d37c;
+    background-color: #87d37c;
 }
 
 #overlay {
     width: 100%;
     height: 100%;
     position: fixed;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     top: 0;
     left: 0;
     z-index: 0;
@@ -238,7 +238,7 @@ body {
     height: auto;
     font-family: Roboto, serif;
     font-size: 14px;
-    color: rgba(0,0,0,0.5);
+    color: rgba(0, 0, 0, 0.5);
     float: right;
 }
 
@@ -247,7 +247,7 @@ body {
     width: 100%;
     height: auto;
     float: left;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0px 1px 0px rgb(0 0 0 / 10%);
     background: rgb(249, 249, 249);
     border-radius: 4px;
@@ -267,7 +267,7 @@ body {
     width: 758px;
     height: 100%;
     float: left;
-    border-left: 1px solid rgba(0,0,0,0.1);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
     padding-left: 20px;
     min-height: 230px;
     background: white;
@@ -281,11 +281,11 @@ body {
     margin-top: 10px;
     line-height: 10px;
     margin-left: 0px;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .post-username-title {
-    background: rgba(0,0,0,0.7);
+    background: rgba(0, 0, 0, 0.7);
     display: inline;
     font-family: Arial, serif;
     font-size: 11px;
@@ -314,5 +314,13 @@ body {
     margin: auto auto 5px;
     font-family: Roboto, serif;
     height: 23px;
+    background-image: url('../../assets/userbar.png');
 }
 
+.rank-admin, .rank-developer {
+    background-color: rgba(217, 30, 24, 0.8);
+}
+
+.rank-op {
+    background-color: #F7CA18;
+}
