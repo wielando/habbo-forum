@@ -1,33 +1,28 @@
 # Habbo-Forum
-Habbo-Forum ist ein PHP geschriebenes Projekt wo du deine eigene Forum Community
-aufbauen kannst. Es ist ideal geeignet für einen Wartungsmodus oder eine Fanseite.
+Habbo-Forum is a PHP written project where you can build your own forum community. 
+It is ideal for a maintenance mode or a fansite.
 
-## Warum dieses Projekt?
-Das Habbo-Forum wurde bereits 2016 entwickelt und diente als Wartungsseite. Auch wenn
-Foren mittlerweile als fast ausgestorben gelten, wollte ich dieses alte Projekt 
-refactoren. Es dient rein als Lernprojekt und wurde dazu entwickelt neue Sachen 
-kennenzulernen, jedoch auch meinen aktuellen Kenntnisstand angemessen zu repräsentieren.
+## Why this Project?
+Habbo forum was developed back in 2016 and served as a maintenance site. Even though
+forums are now considered almost dead, I wanted to refactor this old project. It is a learning project and was developed to get to know new things, but also to represent my current state of knowledge adequately.
 
-## Aktueller Stand des Projekts
-Das Habbo-Forum befindet sich noch in der Entwicklung. Es fehlen noch einige und wichtige
-Funktionalitäten die das Foren-Erlebnis sowohl für den Nutzer als auch für moderative 
-Zwecke angenehmer gestaltet. 
+## Current state of this Project
+The Habbo forum is still under development. It is still missing some and important functionalities that will make the forum experience more pleasant both for the user and for moderation purposes.
 
 ### To-Do Liste
-- Registration & Login
-- Rechte (Thread schließen, öffnen, Nutzer sperren, Beitrag löschen etc.)
-- Thread erstellen und Meta-Informationen ausfüllen (wie zB. Thread-Type)
-- Textformatierung im eigenen Editor
-- Nutzerstatistiken
+- Register & Login
+- User Rights (Close threads, open threads, lock user, delete post and so one)
+- Create thread and fill in meta information (like thread type)
+- Text formatting in your own editor
+- User statistics
 
-Die To-Do Liste könnte unvollständig sein!
+The to-do list might be incomplete!
 
-## Nutzung
-Installiere das Projekt und führe ``composer install`` aus, um die Abhängigkeiten
-wie zB. Twig herunterzuladen. Konfiguriere dein Projekt unter ``app\lib\Config\Config.php``.
+## Usage
+Install the project and run ``composer install`` to download the dependencies like Twig. Configure your project under ``app\lib\Config\Config.php``.
 
-### Route hinzufügen
-Mit folgenden Befehl kannst du eine POST-Route hinzufügen:
+### Add Route
+You can add a POST route with the following command:
 
 ```php
 $route->addRoute('POST', ['url' => '/YOURURL'], function(){
@@ -35,10 +30,10 @@ $route->addRoute('POST', ['url' => '/YOURURL'], function(){
 });
 ```
 
-Als dritter Parameter wird **optional** eine Funktion erwartet, die als Callback dient.
+The third parameter is **optional** and excepts a functions which serves as callback.
 
-### Route hinzufügen mit Twig Template als Callback
-Folgendes Beispiel zeigt eine POST-Route die als Callback ein Twig Template lädt
+### Add route with Twig template as callback
+The following example shows a POST route that loads a Twig template as a callback
 
 ```php 
 $route->addRoute('GET', ['url' => '/example'], function() {
@@ -47,22 +42,20 @@ $route->addRoute('GET', ['url' => '/example'], function() {
 ```
 
 ### TemplateHandler 
-Mit dem TemplateHandler ist es möglich sowohl neue Seiten als auch einzelne HTML-Stücke über
-Twig zu rendern.
+With the TemplateHandler it is possible to render new pages as well as single HTML pieces via
+Twig to render.
 
-Beispiel:
+Example:
 ```php 
 echo (new TemplateHandler('overview', '/example/info'))->renderTemplate(['name' => 'Wieland']);
 ```
-Der ``constructor`` der Klasse ``TemplateHandler`` erwartet zwei Paramter des Typs String. 
-Der erste Parameter muss den Namen der aufzurufenden Datei beinhaltet. Der zweite Parameter beinhaltet
-den Dateipfad der aufrufenden. 
+The ``constructor`` of the ``TemplateHandler`` class expects two parameters of type string.
+The first parameter must contain the name of the file to be called. The second parameter contains
+the file path of the calling file.
 
-Die Methode ``renderTemplate`` rendert die Eingaben und nimmt als **optionalen** Parameter
-ein Array entgegen, die dem Twig Template angefügt werden.
+The ``renderTemplate`` method renders the inputs and takes an array as an optional parameter, which are appended to the Twig template.
 
-Du kannst auch einzelne Elemente einer Twig Seite displayen. Nutze hier für die Methode
-``displayTemplate()``. Beispiel:
+You can also display individual elements of a Twig page. Use here for the method ``displayTemplate()``. Example:
 
 ```php
 echo (new TemplateHandler('thread', '/forum'))->displayTemplate([]);
