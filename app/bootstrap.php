@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 use app\Controller\ForumController;
 use app\Controller\HomeController;
 use app\lib\Config\Config;

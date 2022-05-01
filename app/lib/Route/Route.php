@@ -105,6 +105,7 @@ class Route
                 continue;
             }
 
+            //TODO MIDDLEWARE CALL
             return $route['callback']();
         }
     }
