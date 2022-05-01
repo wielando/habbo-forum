@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2022-04-26 06:40:11
+Date: 2022-05-01 17:05:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,15 +24,17 @@ CREATE TABLE `posts` (
   `user_id` int(11) DEFAULT NULL,
   `thread_id` int(11) DEFAULT NULL,
   `content` text DEFAULT NULL,
+  `date` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of posts
 -- ----------------------------
-INSERT INTO `posts` VALUES ('1', '2', '2', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.');
-INSERT INTO `posts` VALUES ('2', '1', '1', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.');
-INSERT INTO `posts` VALUES ('3', '3', '1', 'Hallo!');
+INSERT INTO `posts` VALUES ('1', '2', '2', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.', '1651079722');
+INSERT INTO `posts` VALUES ('2', '1', '1', 'Der erste Forenbeitrag!', '1651079722');
+INSERT INTO `posts` VALUES ('10', '2', '1', 'ffdsfsdfgdsfgdsfdsf', '1651087662');
+INSERT INTO `posts` VALUES ('11', '1', '1', 'asdsadsadsad', '1651167672');
 
 -- ----------------------------
 -- Table structure for `rank`
@@ -69,7 +71,7 @@ CREATE TABLE `threads` (
 -- ----------------------------
 -- Records of threads
 -- ----------------------------
-INSERT INTO `threads` VALUES ('1', 'Feedback by me', '3', '2', '1');
+INSERT INTO `threads` VALUES ('1', 'Feedback by me', '1', '2', '1');
 INSERT INTO `threads` VALUES ('2', 'Changelog April 9th', '2', '2', '2');
 
 -- ----------------------------
@@ -124,5 +126,5 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES ('1', 'Wieland', 'https://i.imgur.com/ARi0uBW.png', '3', null);
-INSERT INTO `users` VALUES ('2', 'SampleUser', 'https://www.habbo.de/habbo-imaging/avatarimage?user=Kawu&direction=2&head_direction=3&gesture=sml&action=&size=b', '3,4', null);
+INSERT INTO `users` VALUES ('2', 'SampleUser', 'https://www.habbo.de/habbo-imaging/avatarimage?user=Kawu&direction=2&head_direction=3&gesture=sml&action=&size=b', '1,4', null);
 INSERT INTO `users` VALUES ('3', 'UserSample', ' https://www.habbo.de/habbo-imaging/avatarimage?user=Kawu&direction=2&head_direction=3&gesture=sml&action=&size=b', '1,4', null);
