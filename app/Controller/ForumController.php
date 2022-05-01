@@ -13,7 +13,6 @@ class ForumController implements ControllerInterface
 
     private int $communityTabId = 1;
     private int $announcementTabId = 2;
-    private int $updateTabId = 3;
 
     private array $messages = [
         'error' => [
@@ -80,9 +79,6 @@ class ForumController implements ControllerInterface
 
     private function commitPostToThread(): bool
     {
-        /**
-         * TODO: STRING SHIT
-         */
         $userComment = htmlspecialchars($_POST['comment']);
         $threadId = $_GET['thread'];
 
