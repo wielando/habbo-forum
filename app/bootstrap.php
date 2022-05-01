@@ -20,6 +20,10 @@ $route->addRoute('GET', ['url' => '/home'], function() {
     return (new HomeController())->renderHome();
 });
 
+$route->addRoute('GET', ['url' => '/'], function() {
+    return (new ForumController())->displayForum();
+});
+
 $route->addRoute('GET', ['url' => '/forum'], function() {
     return (new ForumController())->displayForum();
 });

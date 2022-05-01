@@ -23,9 +23,8 @@ class HomeDataMapper
 
     public function collectAllStaffUpdates(): bool|array
     {
-        $statement = 'SELECT th.title, u.username, u.avatar, p.content FROM threads as th
-                      LEFT JOIN users as u ON th.creator_id = u.id
-                      LEFT JOIN posts as p ON th.id = p.thread_id';
+        $statement = 'SELECT th.title, u.username, u.avatar FROM threads as th
+                      LEFT JOIN users as u ON th.creator_id = u.id';
 
         $this->dataMapper->prepare($statement);
         $this->dataMapper->executeStmt();
